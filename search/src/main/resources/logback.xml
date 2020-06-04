@@ -4,8 +4,8 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 <configuration scan="true" scanPeriod="30 seconds">
 
 
-    <property name="PROJECT" value="user" /> 
-    <property name="ROOT" value="c:\\logs\\user\\" />
+    <property name="PROJECT" value="search" /> 
+    <property name="ROOT" value="c:\\logs\\search\\" />
     <property name="FILESIZE" value="50KB" />
     <property name="MAXHISTORY" value="60" />
     <timestamp key="DATETIME" datePattern="yyyy-MM-dd HH:mm:ss" />

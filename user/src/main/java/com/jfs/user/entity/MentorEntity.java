@@ -11,28 +11,19 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "T_USER")
-public class UserEntity {
+@Table(name = "T_MENTOR")
+public class MentorEntity {
 
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long userID;
+	private Long mentorID;
 	
 	@Column(name = "USERNAME")
 	private String name;
 	
-	@Column(name = "PASSWORD")
-	private String pass;
-	
-	@Column(name = "FIRSTNAME")
-	private String firstName;
-	
-	@Column(name = "LASTNAME")
-	private String lastName;
-	
-	@Column(name = "CONTACT_NUMBER")
-	private String contact;
+	@Column(name = "LINKEDIN_URL")
+	private String url;
 	
 	@Column(name = "REG_DATETIME")
 	private String regDate;
@@ -40,9 +31,10 @@ public class UserEntity {
 	@Column(name = "REG_CODE")
 	private String regCode;
 	
-	@Column(name = "FORCE_REST_PASSWORD")
-	private Boolean resetPass;
+	@Column(name = "YEARS_OF_EXPERIENCE")
+	private String experience;
 	
 	@Column(name = "ACTIVE")
 	private Boolean active;
+	
 }
