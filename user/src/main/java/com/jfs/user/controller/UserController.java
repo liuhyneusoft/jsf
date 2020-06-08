@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jfs.user.entity.UserEntity;
+ 
 import com.jfs.user.service.UserService;
+import com.jsf.common.entity.UserEntity;
 
 @RestController
 @RequestMapping("/user")
