@@ -31,7 +31,7 @@ public class UserService {
 	}
 	
 	public void sendMsg(Long userID, Long mentorID) {
-		UserEntity user = userRepo.findById(userID).get();
+		//UserEntity user = userRepo.findById(userID).get();
 		 
 	}
 }

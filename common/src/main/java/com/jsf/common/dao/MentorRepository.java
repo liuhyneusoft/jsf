@@ -8,6 +8,6 @@ import com.jsf.common.entity.MentorEntity;
 @Repository
 public interface MentorRepository extends JpaRepository<MentorEntity, Long>, JpaSpecificationExecutor<MentorEntity> {
  
- 
+	MentorEntity findByMentorID(Long mentorID);
 
 }

@@ -8,6 +8,6 @@ import com.jsf.common.entity.SkillEntity;
 @Repository
 public interface SkillRepository extends JpaRepository<SkillEntity, Long>, JpaSpecificationExecutor<SkillEntity> {
  
- 
+	SkillEntity findByNameIgnoreCase(String name);
 
 }
