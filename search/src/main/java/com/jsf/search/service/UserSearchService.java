@@ -10,12 +10,12 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jsf.common.dao.MentorCaleRepository;
+import com.jsf.common.dao.MentorSkillRepository;
+import com.jsf.common.entity.MentorCalenEntity;
+import com.jsf.common.entity.MentorEntity;
+import com.jsf.common.entity.MentorSkillsEntity;
 import com.jsf.search.MentorVO;
-import com.jsf.search.dao.MentorCaleRepository;
-import com.jsf.search.dao.MentorSkillRepository;
-import com.jsf.search.entity.MentorCalenEntity;
-import com.jsf.search.entity.MentorEntity;
-import com.jsf.search.entity.MentorSkillsEntity;
 import com.jsf.search.param.SearchMentorParam;
 
 @Service
