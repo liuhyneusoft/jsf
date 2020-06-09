@@ -33,5 +33,20 @@ public class TrainingController {
 		return response;
 	}
 	
+	@RequestMapping(value = "/accept/{trainID}", method = { RequestMethod.GET })
+	 public JSFResponse accept(@PathVariable Long trainID){
+		JSFResponse response = new JSFResponse();
+		trainService.accept(trainID);
+		return response;
+	}
+	
+	@RequestMapping(value = "/reject/{trainID}", method = { RequestMethod.GET })
+	 public JSFResponse reject(@PathVariable Long trainID){
+		JSFResponse response = new JSFResponse();
+		trainService.reject(trainID);
+		return response;
+	}
+	
+	
 	
 }

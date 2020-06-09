@@ -26,6 +26,18 @@ public class TrainService {
 	@Autowired
 	private UserRepository userRepo;
 
+	public void accept(Long trainID) {
+		TrainEntity train = trainRepo.findById(trainID).get();
+		train.setStatus(TrainStatusEnum.accept);
+		trainRepo.save(train);
+	}
+	
+	public void reject(Long trainID) {
+		TrainEntity train = trainRepo.findById(trainID).get();
+		train.setStatus(TrainStatusEnum.reject);
+		trainRepo.save(train);
+	}
+
 	public void saveTrain(TrainParam param) {
 		try {
 			SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
