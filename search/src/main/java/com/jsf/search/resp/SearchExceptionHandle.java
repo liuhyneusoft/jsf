@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jsf.common.resp.JSFResponse;
+
 @ControllerAdvice
 @ResponseBody
 public class SearchExceptionHandle {
@@ -13,7 +15,7 @@ public class SearchExceptionHandle {
 	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@ExceptionHandler(Exception.class)
-	public UserResponse handleException(Exception e) {
+	public JSFResponse handleException(Exception e) {
 		e.printStackTrace();
 		logger.error(e.toString());
 		for(StackTraceElement element :e.getStackTrace()) {
@@ -22,8 +24,8 @@ public class SearchExceptionHandle {
 		return respond("500", "error");
 	}
 	
-	private UserResponse respond(String errorCode, String msg) {
-		UserResponse response = new UserResponse();
+	private JSFResponse respond(String errorCode, String msg) {
+		JSFResponse response = new JSFResponse();
 		response.setCode(errorCode);
 		response.setMsg(msg);
 		return response;

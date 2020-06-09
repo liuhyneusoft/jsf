@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jsf.common.resp.JSFResponse;
 import com.jsf.search.param.SearchMentorParam;
 import com.jsf.search.resp.UserException;
-import com.jsf.search.resp.UserResponse;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -17,8 +17,8 @@ public class UserSearchController {
 
 	@ApiOperation(value = "user search mentor", notes = "user search mentor")
 	@RequestMapping(value = "/mentor", method = { RequestMethod.POST })
-	public UserResponse identifier(@RequestBody SearchMentorParam param) throws UserException {
-		UserResponse cr = new UserResponse();
+	public JSFResponse identifier(@RequestBody SearchMentorParam param) throws UserException {
+		JSFResponse cr = new JSFResponse();
 		 
 		return cr;
 	}

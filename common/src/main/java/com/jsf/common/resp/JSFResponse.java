@@ -1,9 +1,12 @@
-package com.jsf.search.resp;
+package com.jsf.common.resp;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserResponse {
+import lombok.Data;
+
+@Data
+public class JSFResponse {
 	private String code = "00000";
 	private String msg = "success";
 	private Map<String, Object> responseBody = new HashMap<String, Object>();
@@ -19,4 +22,5 @@ public class UserResponse {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+ 
 }
