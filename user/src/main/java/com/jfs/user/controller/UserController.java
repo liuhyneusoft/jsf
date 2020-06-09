@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jfs.user.feignservice.PayFeignService;
 import com.jfs.user.feignservice.TrainFeignService;
 import com.jfs.user.param.UserRegParam;
 import com.jfs.user.service.UserService;
@@ -47,6 +48,12 @@ public class UserController {
 	@RequestMapping(value = "/train/{trainID}", method = { RequestMethod.GET })
     public JSFResponse xx(@PathVariable Long trainID){
 		return trainService.getTrain(trainID);
+    }
+	@Autowired
+	private PayFeignService payService;
+	@RequestMapping(value = "/test/pay", method = { RequestMethod.GET })
+    public JSFResponse aa(){
+		return payService.testPayment();
     }
 	
 	
