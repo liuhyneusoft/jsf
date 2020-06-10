@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -14,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"com.jfs"})
 @EntityScan("com.jsf.common.entity")
 @EnableJpaRepositories("com.jsf.common.dao")
-
+@EnableScheduling
 public class TrainingApplication {
 
 	public static void main(String[] args) {

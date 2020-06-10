@@ -9,7 +9,7 @@ import com.jsf.common.param.UserRegParam;
 import com.jsf.common.resp.JSFResponse;
 
 @RestController
-@RequestMapping("/mentor")
+@RequestMapping("/user/mentor")
 public class MentorController {
 
 	@RequestMapping(value = "/reg", method = { RequestMethod.POST })
