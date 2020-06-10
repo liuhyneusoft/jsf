@@ -18,3 +18,9 @@ zuul:
     user-service:
       path: /user-service/**
       serviceId: user-service
+
+data-filter:
+  auth-path: #valid token JwtAuthPreFilter
+    - /user-service/user/**
+  user-login-path: #login LoginAddJwtPostFilter
+    - /user-service/login/**
