@@ -1,4 +1,6 @@
-package com.jsf.search.param;
+package com.jsf.common.param;
+
+ 
 
 import lombok.Data;
 

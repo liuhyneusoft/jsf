@@ -43,8 +43,8 @@ public class TrainEntity {
 	@Enumerated(EnumType.STRING)
 	private TrainStatusEnum status;
 	
-	@Column(name = "PROCESS")
-	private String process;
+	@Column(name = "PROGRESS")
+	private String progress;
 	
 	@Column(name = "RATING")
 	private Double rate;

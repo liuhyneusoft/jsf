@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jsf.common.param.SearchMentorParam;
 import com.jsf.common.resp.JSFResponse;
-import com.jsf.search.param.SearchMentorParam;
 import com.jsf.search.resp.UserException;
 
 import io.swagger.annotations.ApiOperation;

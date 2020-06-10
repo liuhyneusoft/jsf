@@ -1,5 +1,7 @@
 package com.jfs.training.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jfs.training.param.TrainParam;
 import com.jfs.training.service.TrainService;
+import com.jsf.common.param.TrainParam;
 import com.jsf.common.resp.JSFResponse;
+import com.jsf.common.vo.TrainVo;
 
  
 @RestController
@@ -25,6 +28,16 @@ public class TrainingController {
 		response.setValue("result", "hahahah");
 		return response;
 	}
+	
+	
+	@RequestMapping(value = "/user/{userID}/list", method = { RequestMethod.GET })
+	 public JSFResponse trainList(@PathVariable Long userID)  {
+		JSFResponse response = new JSFResponse();
+		List<TrainVo> vos = trainService.trains(userID);
+		response.setValue("result", vos);
+		return response;
+	}
+	
 	
 	@RequestMapping(value = "/add", method = { RequestMethod.POST })
 	 public JSFResponse add(@RequestBody TrainParam param)  {

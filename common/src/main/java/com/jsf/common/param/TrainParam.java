@@ -1,5 +1,6 @@
-package com.jfs.training.param;
+package com.jsf.common.param;
 
+ 
 import lombok.Data;
 
 @Data

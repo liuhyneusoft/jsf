@@ -1,4 +1,5 @@
-package com.jfs.user.param;
+package com.jsf.common.param;
+
 
 import lombok.Data;
 

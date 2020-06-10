@@ -15,9 +15,9 @@ import com.jsf.common.dao.MentorSkillRepository;
 import com.jsf.common.entity.MentorCalenEntity;
 import com.jsf.common.entity.MentorEntity;
 import com.jsf.common.entity.MentorSkillsEntity;
+import com.jsf.common.param.SearchMentorParam;
 import com.jsf.search.MentorVO;
-import com.jsf.search.param.SearchMentorParam;
-
+ 
 @Service
 public class UserSearchService {
 

@@ -1,5 +1,7 @@
 package com.jfs.user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,10 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jfs.user.feignservice.PayFeignService;
 import com.jfs.user.feignservice.TrainFeignService;
-import com.jfs.user.param.UserRegParam;
 import com.jfs.user.service.UserService;
 import com.jsf.common.entity.UserEntity;
+import com.jsf.common.param.TrainParam;
+import com.jsf.common.param.UserRegParam;
 import com.jsf.common.resp.JSFResponse;
+import com.jsf.common.vo.TrainVo;
 
 @RestController
 @RequestMapping("/user")
@@ -49,6 +53,19 @@ public class UserController {
     public JSFResponse xx(@PathVariable Long trainID){
 		return trainService.getTrain(trainID);
     }
+	
+	@RequestMapping(value = "/apply/train", method = { RequestMethod.POST })
+	 public JSFResponse add(@RequestBody TrainParam param)  {
+		JSFResponse response = new JSFResponse();
+		trainService.add(param);
+		return response;
+	}
+	
+	@RequestMapping(value = "/{userID}/trains", method = { RequestMethod.GET })
+	 public JSFResponse trainList(@PathVariable Long userID)  {
+		return trainService.trainList(userID);
+	}
+	
 	@Autowired
 	private PayFeignService payService;
 	@RequestMapping(value = "/test/pay", method = { RequestMethod.GET })

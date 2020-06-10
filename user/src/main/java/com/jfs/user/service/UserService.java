@@ -3,9 +3,9 @@ package com.jfs.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jfs.user.param.UserRegParam;
 import com.jsf.common.dao.UserRepository;
 import com.jsf.common.entity.UserEntity;
+import com.jsf.common.param.UserRegParam;
 
  
 @Service

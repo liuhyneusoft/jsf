@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jfs.user.param.UserRegParam;
+import com.jsf.common.param.UserRegParam;
 import com.jsf.common.resp.JSFResponse;
 
 @RestController
@@ -17,4 +17,7 @@ public class MentorController {
 		JSFResponse cr = new JSFResponse();
 		return cr;
     }
+	
+	
+	
 }
