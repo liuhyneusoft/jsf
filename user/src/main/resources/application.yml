@@ -1,6 +1,8 @@
 server:
   port: 8771
 
+swagger:
+  enabled: true
 
 #指定注册中心地址
 eureka:

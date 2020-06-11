@@ -1,9 +1,9 @@
 package com.jsf.common.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,7 +16,7 @@ public class MentorEntity {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long mentorID;
 	
 	@Column(name = "USERNAME")
@@ -26,7 +26,7 @@ public class MentorEntity {
 	private String url;
 	
 	@Column(name = "REG_DATETIME")
-	private String regDate;
+	private Date regDate;
 	
 	@Column(name = "REG_CODE")
 	private String regCode;

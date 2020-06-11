@@ -24,3 +24,5 @@ data-filter:
     - /user-service/user/**
   user-login-path: #login LoginAddJwtPostFilter
     - /user-service/login/**
+  regPath: 
+    - /user-service/reg/**

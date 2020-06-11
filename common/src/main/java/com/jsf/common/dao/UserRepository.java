@@ -9,4 +9,7 @@ import com.jsf.common.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpecificationExecutor<UserEntity> {
  
 	UserEntity findByUserID(Long userID);
+	
+	
+	UserEntity findByNameAndPass(String name, String pass);
 }

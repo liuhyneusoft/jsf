@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jfs.user.feignservice.PayFeignService;
 import com.jfs.user.feignservice.TrainFeignService;
 import com.jfs.user.service.UserService;
+import com.jsf.common.dao.ACustomRepo;
 import com.jsf.common.entity.UserEntity;
 import com.jsf.common.param.TrainParam;
 import com.jsf.common.param.UserRegParam;
@@ -23,7 +24,8 @@ import com.jsf.common.vo.TrainVo;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+	private ACustomRepo queryRepo;
 	@RequestMapping(value = "/reg", method = { RequestMethod.POST })
     public JSFResponse list(@RequestBody UserRegParam userParam){
 		UserEntity user = userService.addUser(userParam);
@@ -35,7 +37,7 @@ public class UserController {
 	@RequestMapping(value = "/{userID}", method = { RequestMethod.GET })
     public JSFResponse getUser(@PathVariable Long userID){
 		JSFResponse cr = new JSFResponse();
-		UserEntity user = userService.getUser(userID);
+		UserEntity user = queryRepo.getUser(userID);
 		cr.setValue("result", user);
         return cr;
     }

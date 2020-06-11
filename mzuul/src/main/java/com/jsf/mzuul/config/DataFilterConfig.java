@@ -12,4 +12,5 @@ import java.util.List;
 public class DataFilterConfig {
     private List<String> authPath;
     private List<String> userLoginPath;
+    private List<String> regPath;
 }
