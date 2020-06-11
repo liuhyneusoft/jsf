@@ -13,11 +13,16 @@ import com.jsf.common.resp.JSFResponse;
 public interface TrainFeignService {
 	@GetMapping("/{trainID}")
 	public JSFResponse getTrain(@PathVariable("trainID") Long trainID);
-	
+
 	@PostMapping(value = "/add")
-	 public JSFResponse add(@RequestBody TrainParam param);
+	public JSFResponse add(@RequestBody TrainParam param);
+
+	@GetMapping(value = "/user/{userID}/list")
+	public JSFResponse trainList(@PathVariable("userID") Long userID);
+
+	@GetMapping(value = "/accept/{trainID}")
+	public JSFResponse accept(@PathVariable("trainID") Long trainID);
 	
-	
-	@GetMapping(value = "/user/{userID}/list" )
-	 public JSFResponse trainList(@PathVariable("userID") Long userID);
+	@GetMapping(value = "/reject/{trainID}")
+	public JSFResponse reject(@PathVariable("trainID") Long trainID);
 }

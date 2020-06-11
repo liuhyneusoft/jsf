@@ -26,54 +26,66 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ACustomRepo queryRepo;
+
 	@RequestMapping(value = "/reg", method = { RequestMethod.POST })
-    public JSFResponse list(@RequestBody UserRegParam userParam){
+	public JSFResponse list(@RequestBody UserRegParam userParam) {
 		UserEntity user = userService.addUser(userParam);
 		JSFResponse cr = new JSFResponse();
 		cr.setValue("result", user);
 		return cr;
-    }
-	
+	}
+
 	@RequestMapping(value = "/{userID}", method = { RequestMethod.GET })
-    public JSFResponse getUser(@PathVariable Long userID){
+	public JSFResponse getUser(@PathVariable Long userID) {
 		JSFResponse cr = new JSFResponse();
 		UserEntity user = queryRepo.getUser(userID);
 		cr.setValue("result", user);
-        return cr;
-    }
-	
+		return cr;
+	}
+
 	@RequestMapping(value = "/message/{userID}/{mentorID}", method = { RequestMethod.GET })
-    public JSFResponse sendMsg(@PathVariable Long userID, @PathVariable Long mentorID){
+	public JSFResponse sendMsg(@PathVariable Long userID, @PathVariable Long mentorID) {
 		JSFResponse cr = new JSFResponse();
 		userService.sendMsg(userID, mentorID);
-        return cr;
-    }
-	
+		return cr;
+	}
+
 	@Autowired
 	private TrainFeignService trainService;
+
 	@RequestMapping(value = "/train/{trainID}", method = { RequestMethod.GET })
-    public JSFResponse xx(@PathVariable Long trainID){
+	public JSFResponse xx(@PathVariable Long trainID) {
 		return trainService.getTrain(trainID);
-    }
-	
+	}
+
 	@RequestMapping(value = "/apply/train", method = { RequestMethod.POST })
-	 public JSFResponse add(@RequestBody TrainParam param)  {
+	public JSFResponse add(@RequestBody TrainParam param) {
 		JSFResponse response = new JSFResponse();
 		trainService.add(param);
 		return response;
 	}
-	
+
+	@RequestMapping(value = "/accept/train/{trainID}", method = { RequestMethod.GET })
+	public JSFResponse accept(@PathVariable Long trainID) {
+		return trainService.accept(trainID);
+	}
+
+	@RequestMapping(value = "/reject/train/{trainID}", method = { RequestMethod.GET })
+	public JSFResponse reject(@PathVariable Long trainID) {
+		return trainService.reject(trainID);
+	}
+
 	@RequestMapping(value = "/{userID}/trains", method = { RequestMethod.GET })
-	 public JSFResponse trainList(@PathVariable Long userID)  {
+	public JSFResponse trainList(@PathVariable Long userID) {
 		return trainService.trainList(userID);
 	}
-	
+
 	@Autowired
 	private PayFeignService payService;
+
 	@RequestMapping(value = "/test/pay", method = { RequestMethod.GET })
-    public JSFResponse aa(){
+	public JSFResponse aa() {
 		return payService.testPayment();
-    }
-	
-	
+	}
+
 }

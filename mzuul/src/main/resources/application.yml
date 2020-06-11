@@ -18,7 +18,14 @@ zuul:
     user-service:
       path: /user-service/**
       serviceId: user-service
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
 
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+     
 data-filter:
   auth-path: #valid token JwtAuthPreFilter
     - /user-service/user/**
