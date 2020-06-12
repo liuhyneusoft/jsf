@@ -63,13 +63,18 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>common</finalName>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			<plugin>  
+                    <groupId>org.springframework.boot</groupId>  
+                    <artifactId>spring-boot-maven-plugin</artifactId> 
+                    <!-- 其他项目依赖common，需要修改plugin，否则其他项目再install的时候找不到common的类 --> 
+                    <configuration>  
+                        <classifier>exec</classifier>  
+                    </configuration>  
+                </plugin>
 		</plugins>
 	</build>
 
