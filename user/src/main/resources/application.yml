@@ -9,6 +9,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/
+      #defaultZone: http://3.15.179.198:8761/eureka/
 
 #服务的名称
 spring:         #表示该配置直接为Spring容器负责处理
@@ -17,5 +18,8 @@ spring:         #表示该配置直接为Spring容器负责处理
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/lhy?useUnicode=true&characterEncoding=utf8
+    #url: jdbc:mysql://database-1.cbgqcdcb2yio.us-east-2.rds.amazonaws.com:3306/jsf?useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
+    #username: admin
+    #password: 1qaz!QAZ
