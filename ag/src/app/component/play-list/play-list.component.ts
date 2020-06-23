@@ -33,14 +33,7 @@ export class PlayListComponent implements OnInit {
   mode = false;
   dark = false;
   menus = [
-    {
-      level: 1,
-      title: 'Video',
-      url: '/edit',
-      icon: 'setting',
-      selected: false,
-      disabled: false
-    },
+   
     {
       level: 1,
       title: 'Login',
