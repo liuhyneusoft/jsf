@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { CService } from "../../_service/cservice";
 import { NzMessageService } from 'ng-zorro-antd/message';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-clogin',
   templateUrl: './clogin.component.html',
@@ -25,7 +25,8 @@ export class CloginComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private fb: FormBuilder,
-    private prService: CService
+    private prService: CService,
+    private router: Router 
     ) {}
  
 
@@ -38,16 +39,15 @@ export class CloginComponent implements OnInit {
   }
 
   login(): void {
-   
+    
 		this.prService.login(this.validateForm.value.userName, this.validateForm.value.password).subscribe(result => {
       debugger
       if (result.code != '0') {
         this.message.info('error');
-
 				return;
 			} else {
-        
         this.message.info('success');
+        this.router.navigateByUrl("/cuser");
 			}
 		});
   }
