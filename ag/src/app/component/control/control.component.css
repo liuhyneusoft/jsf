@@ -1,0 +1,104 @@
+
+ .video {
+    background: #f0f2f5;
+    height: 600px;
+   
+  }
+.video_container {
+    width: 100%;
+}
+
+
+.progress {
+    margin: auto;
+	width:600px;
+	height:16px;
+	margin-bottom: 5px;
+	background-color: white;
+}
+progress::-moz-progress-bar { background:#2e52a4; }
+
+
+ .video_size{
+     width: 100%;
+     height: 500px;
+     object-fit: fill;
+ }
+ 
+ .durationbar {
+     width: 100%;
+     height: 10px;
+     margin-top: 10px;
+     background: rgba(65, 62, 62, 1);
+     -webkit-border-radius: 50px;
+     -moz-border-radius: 50px;
+     -ms-border-radius: 50px;
+     -o-border-radius: 50px;
+     border-radius: 50px;
+     position: relative;
+ }
+ 
+ .drawbar {
+     position: absolute;
+     background: #fff;
+     width: 20px;
+     height: 20px;
+     left: 0;
+     top: -5px;
+     z-index: 10;
+     -webkit-border-radius: 50px;
+     -moz-border-radius: 50px;
+     -ms-border-radius: 50px;
+     -o-border-radius: 50px;
+     border-radius: 50px;
+     cursor: pointer;
+ }
+ .bufferbar, .currentbar {
+     position: absolute;
+     left: 0;
+     top: 0;
+     height: 100%;
+     width: 0;
+     background: rgba(117, 114, 114, 1);
+     -webkit-border-radius: 50px;
+     -moz-border-radius: 50px;
+     -ms-border-radius: 50px;
+     -o-border-radius: 50px;
+     border-radius: 50px;
+     z-index: 5;
+     cursor: pointer;
+ }
+ .currentbar {
+     background: #fff;
+     z-index: 10;
+ }
+ .control-btn {
+     margin-right: 10px;
+ }
+ .i-item{
+     margin-left: 10px;
+ }
+ .spanGreenColor{
+     color: #28a745;
+     cursor:pointer;
+ }
+ .spanRedColor{
+     color: red;
+     cursor: pointer;
+ }
+ .spanGreyColor{
+     color: grey;
+     cursor: pointer;
+ }
+ .spanBlackColor{
+     color: #2b333f;
+     cursor:pointer;
+ }
+ .spanYellowColor{
+     color: #ffbe07;
+     cursor:pointer;
+ }
+ .cursor{
+     cursor:pointer;
+ }
+ 

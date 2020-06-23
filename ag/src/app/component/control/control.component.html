@@ -1,0 +1,51 @@
+<div nz-row >
+    <div nz-col nzSpan="16">
+        <h2>{{ currentPlayvideo?.title}} </h2> 
+    </div>
+</div>  
+<div class="video">  
+    <div nz-row >
+        <div nz-col nzSpan="20" nzOffset="2" nzAlign="middle" style="margin-top: 40px;">
+            <video class="video-js vjs-default-skin vjs-big-play-centered video_size"  
+             (loadedmetadata)="loadedmetadata()"
+            (timeupdate)="timeupdata()" >
+                <source [src]="currentPlayvideo?.url" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div nz-row  style="margin-top: 10px;">
+        <div nz-col nzSpan="5" nzOffset="2" nzAlign="middle">
+            <!--暂停/播放键-->
+            <div class=" pull-left" >
+                <span [class]="playPauseColor" (click)= "playPauseHandle()" ><i [class]="playPauseIcon"></i></span>
+                <span  class= "spanYellowColor"  (click)= "replay()" ><i class="fas fa-reply fa-2x i-item"></i></span>
+                <span [class]="muteColor" (click)= "mutedHandle()" ><i [class]="mutedIcon" ></i></span>
+                <span class="cursor" (click)="changeVolume('+')"><i class="fas fa-plus-circle fa-1x i-item"></i></span>
+                <span class="cursor" (click)="changeVolume('-')"><i class="fas fa-minus-circle fa-1x i-item"></i></span>
+                <span><i class="fa fa-volume-up fa-1x i-item"></i> {{ volumeNum }}</span>
+            </div>
+        </div>
+        <div nz-col nzSpan="10">
+            <div nz-row >
+            <!--播放时长-->
+                <div nz-col nzSpan="2"  class=" pull-left" >{{ videoCurrentTime }} </div> 
+                <div nz-col nzSpan="12" class="pull-left"> 
+                <!--总视频长度进度条-->
+                    <div class="durationbar" id="durationBar">
+                        <!--缓冲进度条-->
+                        <div class="bufferbar" id="bufferBar"></div>
+                        <!--正在播放进度条-->
+                        <div class="currentbar" id="currentBar"></div>
+                        <div class="drawbar" id="drawBar"></div>
+                    </div>
+                </div>
+                <!--总时长-->
+                <div nz-col nzSpan="2"class="pull-left" > {{ videoDuration }}</div>
+            </div>
+        </div>
+        <div nz-col nzSpan="4">
+            <span (click)="likeHendle('like')"><i class="far fa-thumbs-up  fa-2x i-item spanGreenColor"></i> {{ currentPlayvideo?.like }}</span>
+            <span (click)="likeHendle('unLike')"><i class="far fa-thumbs-down  fa-2x i-item spanRedColor"></i> {{ currentPlayvideo?.unLike }}</span>
+        </div>     
+    </div>
+</div>

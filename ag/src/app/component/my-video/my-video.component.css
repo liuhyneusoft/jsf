@@ -1,0 +1,15 @@
+.video_container {
+    width: 100%;
+}
+
+
+.progress {
+    margin: auto;
+	width:600px;
+	height:16px;
+	margin-bottom: 5px;
+	background-color: white;
+}
+progress::-moz-progress-bar { background:#2e52a4; }
+
+

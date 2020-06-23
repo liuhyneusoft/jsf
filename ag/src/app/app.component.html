@@ -1,0 +1,30 @@
+<nz-layout class="layout">
+  <nz-sider
+      nzCollapsible
+      nzTheme="light"
+      [(nzCollapsed)]="isCollapsed"
+      [nzBreakpoint]="'lg'"
+      [nzCollapsedWidth]="0"
+    >
+      <div class="logo" ><img  src="./assets/img/RD-blue.png" /></div>
+      <app-play-list></app-play-list> 
+  </nz-sider>    
+  <nz-layout>
+    <nz-header>
+      <div nz-row >
+        <div nz-col nzSpan="8" nzOffset="10" nzAlign="middle" >
+          <h1> Angular </h1>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+          <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>
+<ng-template #zeroTrigger>
+  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+</ng-template>
