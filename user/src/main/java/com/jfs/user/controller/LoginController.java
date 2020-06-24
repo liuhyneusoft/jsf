@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jfs.user.service.LoginService;
+import com.jsf.common.entity.UserEntity;
 import com.jsf.common.param.LoginParam;
 import com.jsf.common.resp.JSFResponse;
 
@@ -20,8 +21,9 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = { RequestMethod.POST })
     public JSFResponse getUser(@RequestBody LoginParam param){
 		JSFResponse cr = new JSFResponse();
-		Long userId = loginService.login(param);
-		cr.setValue("userId", userId);
+		UserEntity user = loginService.login(param);
+		cr.setValue("userID", user.getUserID());
+		cr.setValue("userName", user.getName());
         return cr;
     }
 }

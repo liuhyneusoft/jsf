@@ -23,9 +23,25 @@ export class CService {
             .pipe(
                 map(
                     result => {
+                        console.log(result+"in")
                         return result;
                     }
                 )
             )
     }
+
+
+    register(name: string, password: string, type: string) {
+        return this.httpCustomer
+          .httpPost(`${environment.apiUrl}/user-service/reg/`, {'name': name, 'password': password,'type': type} )
+          .pipe(
+              map(
+                  result => {
+                      console.log(result+"reg")
+                
+                      return result;
+                  }
+              )
+          )
+  }
 }

@@ -16,6 +16,7 @@ import org.springframework.util.StreamUtils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.EnumKeySerializer;
 import com.jsf.mzuul.config.DataFilterConfig;
 import com.jsf.mzuul.util.JwtUtil;
 import com.jsf.mzuul.util.PathUtil;
@@ -91,7 +92,7 @@ public class LoginAddJwtPostFilter extends ZuulFilter {
             Result<HashMap<String, Object>> result = objectMapper.readValue(body, new TypeReference<Result<HashMap<String, Object>>>() {
             });
             //result.getCode() == 0 表示登录成功
-            if (result.getCode() == 0) {
+            if (result.getCode().equals( "00000")) {
                 HashMap<String, Object> jwtClaims = new HashMap<String, Object>() {{
                     put("userId", result.getResponseBody().get("userId"));
                 }};
@@ -99,13 +100,19 @@ public class LoginAddJwtPostFilter extends ZuulFilter {
                 String token = jwtUtil.createJWT(expDate, jwtClaims);
                 //body json增加token
                 result.getResponseBody().put("token", token);
-                //序列化body json,设置到响应body中
-                body = objectMapper.writeValueAsString(result);
-                ctx.setResponseBody(body);
+               
 
                 //响应头设置token
                 ctx.addZuulResponseHeader("token", token);
+            } else {
+            	result.getResponseBody().put("code", result.getCode());
+            	result.getResponseBody().put("msg", result.getMsg());
             }
+            
+            //序列化body json,设置到响应body中
+            body = objectMapper.writeValueAsString(result);
+            ctx.setResponseBody(body);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

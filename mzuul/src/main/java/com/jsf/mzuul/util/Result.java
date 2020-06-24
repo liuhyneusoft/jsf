@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class Result<T> {
-    private int code = 0;
-    private String message = "ok";
+    private String code = "0";
+    private String msg = "ok";
     private T data;
     private Map<String, String> responseBody;
 }

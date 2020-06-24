@@ -113,8 +113,8 @@ import io.jsonwebtoken.ExpiredJwtException;
     private void responseError(RequestContext ctx, int code, String message) {
         HttpServletResponse response = ctx.getResponse();
         Result errResult = new Result();
-        errResult.setCode(code);
-        errResult.setMessage(message);
+        errResult.setCode(code+"");
+        errResult.setMsg(message);
         ctx.setResponseBody(toJsonString(errResult));
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.setContentType("application/json;charset=utf-8");

@@ -1,7 +1,9 @@
- 
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { CService } from "../../_service/cservice";
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-csignup',
   templateUrl: './csignup.component.html',
@@ -9,6 +11,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CsignupComponent implements OnInit {
   validateForm!: FormGroup;
+  //radioValue:'user';
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -16,7 +19,10 @@ export class CsignupComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
   }
-
+  changeRadio(){
+   // debugger;
+    //console.log("radioValue:" + this.radioValue)
+  }
   updateConfirmValidator(): void {
     /** wait for refresh value */
     Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
@@ -30,12 +36,16 @@ export class CsignupComponent implements OnInit {
     }
     return {};
   };
+ 
 
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
+  constructor(
+    private message: NzMessageService,
+    private fb: FormBuilder,
+    private prService: CService,
+    private router: Router 
+  ) {
+
   }
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -46,8 +56,26 @@ export class CsignupComponent implements OnInit {
       phoneNumberPrefix: ['+86'],
       phoneNumber: [null, [Validators.required]],
       website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
+      agree: [false] ,
+      radioValue:['user']
     });
   }
+
+
+  regsiter(): void {
+    //debugger
+    this.prService.register(this.validateForm.value.email, 
+      this.validateForm.value.password, 
+      this.validateForm.value.radioValue)
+    .subscribe(result => {
+      if (result.code != '00000') {
+        this.message.error(result.msg);
+				return;
+			} else {
+        this.message.info('register success');
+        this.router.navigateByUrl("/clogin");
+			}
+		});
+  }
+
 }

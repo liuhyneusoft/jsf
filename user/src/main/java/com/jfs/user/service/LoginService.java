@@ -1,12 +1,16 @@
 package com.jfs.user.service;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Collections2;
+import com.jfs.user.exception.UserException;
 import com.jsf.common.dao.ACustomRepo;
 import com.jsf.common.dao.MentorRepository;
 import com.jsf.common.dao.UserRepository;
@@ -25,14 +29,17 @@ public class LoginService {
 	@Autowired
 	private MentorRepository mentorRepo;
 	
-	public Long login(LoginParam param) {
+	public UserEntity login(LoginParam param) {
 		UserEntity user = userRepo.findByNameAndPass(param.getName(), param.getPassword());
-		return user.getUserID();
+		if(user ==  null) {
+			throw new UserException("500", "please check username and password");
+		}
+		return user;
 	}
 	
 	
 	public Long reg(RegParam param) {
-		
+		checkName(param.getName());
 		UserEntity user = new UserEntity();
 		user.setName(param.getName());
 		user.setPass(param.getPassword());
@@ -47,5 +54,12 @@ public class LoginService {
 			mentorRepo.save(mentor);
 		} 
 		return user.getUserID();
+	}
+	
+	private void checkName(String name) {
+		List<UserEntity> users = userRepo.findAllByNameIgnoreCase(name);
+		if(users != null && users.size() > 0) {
+			throw new UserException("500","user name already exists");
+		}
 	}
 }

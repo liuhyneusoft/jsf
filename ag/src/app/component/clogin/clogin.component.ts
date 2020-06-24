@@ -38,20 +38,30 @@ export class CloginComponent implements OnInit {
     });
   }
 
-  login(): void {
-    
-		this.prService.login(this.validateForm.value.userName, this.validateForm.value.password).subscribe(result => {
-      debugger
-      if (result.code != '0') {
-        this.message.info('error');
+  login(): void { 
+		this.prService.login(
+      this.validateForm.value.userName, 
+      this.validateForm.value.password)
+    .subscribe(result => {
+      
+      if (result.code != '00000') {
+        this.message.error(result.msg);
 				return;
 			} else {
-        this.message.info('success');
+        console.log(result.responseBody.token)
+        this.message.info('welcome ' + result.responseBody.userName);
         this.router.navigateByUrl("/cuser");
 			}
 		});
   }
+
+  regBtn():void {
+    this.router.navigateByUrl("/csignup");
+  }
   
+  fgPw():void {
+    this.message.info('developing' );
+  }
   // validateForm!: FormGroup;
  
 

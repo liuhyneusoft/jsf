@@ -28,8 +28,8 @@ public class UserTest {
 		LoginParam param = new LoginParam();
 		param.setName("lhy");
 		param.setPassword("123456");
-		Long userId = loginService.login(param);
-		logger.info("*************** user login ********** " + userId);
+		UserEntity userId = loginService.login(param);
+		logger.info("*************** user login ********** " + userId.getUserID());
 	}
 	
 	@Autowired
