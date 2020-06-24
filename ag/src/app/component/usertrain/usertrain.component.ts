@@ -1,4 +1,3 @@
- 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
@@ -8,11 +7,12 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cmentor',
-  templateUrl: './cmentor.component.html',
-  styleUrls: ['./cmentor.component.css']
+  selector: 'app-usertrain',
+  templateUrl: './usertrain.component.html',
+  styleUrls: ['./usertrain.component.css']
 })
-export class CmentorComponent implements OnInit {
+export class UsertrainComponent implements OnInit {
+
   listOfData   = [];
   constructor( private message: NzMessageService,
     private fb: FormBuilder,
@@ -35,39 +35,5 @@ export class CmentorComponent implements OnInit {
 			}
 		});
   }
-
-
-  confirm(id):void {
-     
-    this.prService.confirm(id) 
-    .subscribe(result => {
-      if (result.code != '00000') {
-        this.message.error(result.msg);
-				return;
-			} else {
-        this.initTable();
-        this.message.info(result.msg);
-			}
-		});
-
-  }
-
-
-  reject(id):void {
-     
-    this.prService.reject(id) 
-    .subscribe(result => {
-      if (result.code != '00000') {
-        this.message.error(result.msg);
-				return;
-			} else {
-        this.initTable();
-        this.message.info(result.msg);
-			}
-		});
-
-  }
-
-
 
 }

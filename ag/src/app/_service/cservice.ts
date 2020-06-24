@@ -86,4 +86,44 @@ export class CService {
               )
           )
     }
+
+
+    getTraining(id: string) {
+        const params = new HttpParams().set("userID",id);
+        return this.httpCustomer
+          .httpGet(`${environment.apiUrl}/user-service/fun/trainings`,{params})
+          .pipe(
+              map(
+                  result => {
+                      return result;
+                  }
+              )
+          )
+  }
+
+  confirm(id: string) {
+    const params = new HttpParams().set("id",id);
+    return this.httpCustomer
+      .httpGet(`${environment.apiUrl}/user-service/fun/confirm`,{params})
+      .pipe(
+          map(
+              result => {
+                  return result;
+              }
+          )
+      )
+}
+
+reject(id: string) {
+    const params = new HttpParams().set("id",id);
+    return this.httpCustomer
+      .httpGet(`${environment.apiUrl}/user-service/fun/reject`,{params})
+      .pipe(
+          map(
+              result => {
+                  return result;
+              }
+          )
+      )
+}
 }

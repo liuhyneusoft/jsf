@@ -38,10 +38,14 @@ public class TrainService {
 	}
 
 	private TrainVo trainToVo(TrainEntity train) {
+		SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		TrainVo vo = new TrainVo();
 		vo.setSkill(train.getSkill().getName());
 		vo.setStatus(train.getStatus().toString());
-		vo.setMentor(train.getMentor().getName());
+		vo.setApplyDate(sFormat.format(train.getStartDate()));
+		vo.setId(train.getTrainID()+"");
+		vo.setMentorName(train.getMentor().getName());
+		vo.setUserName(train.getUser().getName());
 		return vo;
 	}
 

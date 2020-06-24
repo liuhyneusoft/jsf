@@ -41,4 +41,24 @@ public class FuncController {
     }
 	
 	
+	@RequestMapping(value = "/trainings", method = { RequestMethod.GET })
+    public JSFResponse trainings(@RequestParam(name = "userID") String userID){
+		return us.trains(userID);
+    }
+	
+	@RequestMapping(value = "/confirm", method = { RequestMethod.GET })
+    public JSFResponse confirm(@RequestParam(name = "id") String id){
+		JSFResponse cr = new JSFResponse();
+		us.confirm(id);
+        return cr;
+    }
+	
+	@RequestMapping(value = "/reject", method = { RequestMethod.GET })
+    public JSFResponse reject(@RequestParam(name = "id") String id){
+		JSFResponse cr = new JSFResponse();
+		us.reject(id);
+        return cr;
+    }
+	
+	
 }

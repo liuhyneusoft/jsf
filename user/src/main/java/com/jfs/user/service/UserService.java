@@ -1,5 +1,6 @@
 package com.jfs.user.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ import com.jsf.common.entity.MentorEntity;
 import com.jsf.common.entity.UserEntity;
 import com.jsf.common.param.TrainParam;
 import com.jsf.common.param.UserRegParam;
+import com.jsf.common.resp.JSFResponse;
 import com.jsf.common.vo.MentoVo;
 
  
@@ -27,14 +29,27 @@ public class UserService {
 	@Autowired
 	private TrainFeignService trainService;
 	
+	public void reject(String trainID) {
+		trainService.reject(Long.parseLong(trainID));
+	}
+	
+	public void confirm(String trainID) {
+		trainService.accept(Long.parseLong(trainID));
+	}
+	
+	public JSFResponse trains(String userID) {
+		return trainService.trainList(Long.parseLong(userID));
+	}
+	
 	
 	public void apply(String userID, String mail) {
+		SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		MentorEntity mentor = mentorRepo.findByRegCode(mail);
 		TrainParam param = new TrainParam();
 		param.setEndDate("2020-12-31");
 		param.setMentorID(mentor.getMentorID());
 		param.setSkill("java");
-		param.setStartDate("2020-06-30");
+		param.setStartDate(sFormat.format(new Date()));	
 		param.setUserID(Long.parseLong(userID));
 		trainService.add(param);
 	}

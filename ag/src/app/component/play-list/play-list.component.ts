@@ -15,7 +15,7 @@ export class PlayListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMenus();
+    //this.getMenus();
   }
   getMenus(): void {
       
@@ -60,12 +60,29 @@ export class PlayListComponent implements OnInit {
     },
     {
       level: 1,
-      title: 'Training',
+      title: 'Training of Mentor',
       url: '/cmentor',
       icon: 'setting',
       selected: false,
       disabled: false
+    },
+    {
+      level: 1,
+      title: 'Training of User',
+      url: '/cusertrain',
+      icon: 'setting',
+      selected: false,
+      disabled: false
+    },
+    {
+      level: 1,
+      title: 'Payment',
+      url: '/cpayment',
+      icon: 'setting',
+      selected: false,
+      disabled: false
     }
+
   ];
 
 }

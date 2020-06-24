@@ -7,7 +7,8 @@ import { CsignupComponent } from './component/csignup/csignup.component';
 
 import { CuserComponent } from './component/cuser/cuser.component';
 import { CmentorComponent } from './component/cmentor/cmentor.component';
-
+import { UsertrainComponent } from './component/usertrain/usertrain.component';
+import { CpaymentComponent } from './component/cpayment/cpayment.component';
 
 const routes: Routes = [
   
@@ -17,8 +18,11 @@ const routes: Routes = [
   { path: 'csignup', component: CsignupComponent},
   { path: 'cuser', component: CuserComponent},
   { path: 'cmentor', component: CmentorComponent},
+  { path: 'cusertrain', component: UsertrainComponent},
+  { path: 'cpayment', component: CpaymentComponent},
   { path: '**', component: CloginComponent}
  
+  
 ];
 
 @NgModule({

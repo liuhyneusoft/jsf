@@ -21,7 +21,9 @@ import { MessageService} from './core/message.service';
 import { CloginComponent } from './component/clogin/clogin.component';
 import { CsignupComponent } from './component/csignup/csignup.component';
 import { CuserComponent } from './component/cuser/cuser.component';
-import { CmentorComponent } from './component/cmentor/cmentor.component'
+import { CmentorComponent } from './component/cmentor/cmentor.component';
+import { UsertrainComponent } from './component/usertrain/usertrain.component';
+import { CpaymentComponent } from './component/cpayment/cpayment.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { CmentorComponent } from './component/cmentor/cmentor.component'
     CloginComponent,
     CsignupComponent,
     CuserComponent,
-    CmentorComponent
+    CmentorComponent,
+    UsertrainComponent,
+    CpaymentComponent
   ],
   imports: [
     ReactiveFormsModule,
