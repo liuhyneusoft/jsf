@@ -43,12 +43,13 @@ export class CloginComponent implements OnInit {
       this.validateForm.value.userName, 
       this.validateForm.value.password)
     .subscribe(result => {
-      
+      debugger
       if (result.code != '00000') {
         this.message.error(result.msg);
 				return;
 			} else {
-        console.log(result.responseBody.token)
+        console.log(result.responseBody.userID)
+        sessionStorage.setItem("userID", result.responseBody.userID);
         this.message.info('welcome ' + result.responseBody.userName);
         this.router.navigateByUrl("/cuser");
 			}

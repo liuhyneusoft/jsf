@@ -72,4 +72,18 @@ export class CService {
               )
           )
     }
+
+
+    applyM(userID: string, mentorMail: string) {
+        const params = new HttpParams().set("userID",userID).set("mentorMail",mentorMail);
+        return this.httpCustomer
+          .httpGet(`${environment.apiUrl}/user-service/fun/apply/mentor`,{params} )
+          .pipe(
+              map(
+                  result => {
+                      return result;
+                  }
+              )
+          )
+    }
 }

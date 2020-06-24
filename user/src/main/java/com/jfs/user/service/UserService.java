@@ -1,15 +1,18 @@
 package com.jfs.user.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jfs.user.feignservice.TrainFeignService;
 import com.jsf.common.dao.MentorRepository;
 import com.jsf.common.dao.UserRepository;
 import com.jsf.common.entity.MentorEntity;
 import com.jsf.common.entity.UserEntity;
+import com.jsf.common.param.TrainParam;
 import com.jsf.common.param.UserRegParam;
 import com.jsf.common.vo.MentoVo;
 
@@ -21,6 +24,20 @@ public class UserService {
 	private UserRepository userRepo;
 	@Autowired
 	private MentorRepository mentorRepo;
+	@Autowired
+	private TrainFeignService trainService;
+	
+	
+	public void apply(String userID, String mail) {
+		MentorEntity mentor = mentorRepo.findByRegCode(mail);
+		TrainParam param = new TrainParam();
+		param.setEndDate("2020-12-31");
+		param.setMentorID(mentor.getMentorID());
+		param.setSkill("java");
+		param.setStartDate("2020-06-30");
+		param.setUserID(Long.parseLong(userID));
+		trainService.add(param);
+	}
 	
 	
 	public List<MentoVo> getMentors() {

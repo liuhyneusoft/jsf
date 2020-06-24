@@ -12,4 +12,5 @@ public interface MentorRepository extends JpaRepository<MentorEntity, Long>, Jpa
  
 	MentorEntity findByMentorID(Long mentorID);
 	List<MentorEntity> findAllByNameLike(String name);
+	MentorEntity findByRegCode(String regCode);
 }

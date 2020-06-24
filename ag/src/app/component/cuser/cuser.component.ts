@@ -27,8 +27,19 @@ export class CuserComponent implements OnInit {
     });
     this.initTable();
   }
-  selMent(name):void {
-    this.message.info("select mentor " + name );
+  selMent(mail):void {
+    this.message.info("select mentor " + mail );
+    this.message.info("select mentor id " + sessionStorage.getItem("userID") );
+    this.prService.applyM(sessionStorage.getItem("userID"), mail) 
+    .subscribe(result => {
+      if (result.code != '00000') {
+        this.message.error(result.msg);
+				return;
+			} else {
+        this.message.info(result.msg);
+			}
+		});
+
   }
 
   initTable(): void { 

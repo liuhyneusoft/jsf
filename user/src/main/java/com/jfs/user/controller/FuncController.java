@@ -33,4 +33,12 @@ public class FuncController {
 		cr.setValue("result", vos);
         return cr;
     }
+	@RequestMapping(value = "/apply/mentor", method = { RequestMethod.GET })
+    public JSFResponse apply(@RequestParam(name = "userID") String userID, @RequestParam(name = "mentorMail") String mentorMail){
+		JSFResponse cr = new JSFResponse();
+		us.apply(userID, mentorMail);
+        return cr;
+    }
+	
+	
 }
