@@ -28,10 +28,15 @@ public class UserService {
 		return mentorEntities.stream().map(v ->mentoToVo(v)).collect(Collectors.toList());
 	}
 	
+	public List<MentoVo> getMentorsParam(String name, String skill) {
+		List<MentorEntity> mentorEntities = mentorRepo.findAllByNameLike("%"+name+"%");
+		return mentorEntities.stream().map(v ->mentoToVo(v)).collect(Collectors.toList());
+	}
+	
 	private MentoVo mentoToVo(MentorEntity m) {
 		MentoVo vo = new MentoVo();
 		vo.setName(m.getName());
-		vo.setMail(m.getName());
+		vo.setMail(m.getRegCode());
 		vo.setExp("10");
 		return vo;
 	}

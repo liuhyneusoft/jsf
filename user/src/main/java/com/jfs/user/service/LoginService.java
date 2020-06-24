@@ -49,7 +49,9 @@ public class LoginService {
 			MentorEntity mentor = new MentorEntity();
 			mentor.setMentorID(user.getUserID());
 			mentor.setActive(true);
-			mentor.setName(user.getName());
+			String[] names = user.getName().split("@");
+			mentor.setName(names[0]);
+			mentor.setRegCode(user.getName());//mail
 			mentor.setRegDate(new Date());
 			mentorRepo.save(mentor);
 		} 

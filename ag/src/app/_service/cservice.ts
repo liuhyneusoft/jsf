@@ -55,5 +55,21 @@ export class CService {
                   }
               )
           )
-  }
+    }
+
+
+    searchM(name: string, skill: string) {
+        const params = new HttpParams().set("name",name).set("skill",skill);
+        return this.httpCustomer
+          .httpGet(`${environment.apiUrl}/user-service/fun/mentors/param`,{params} )
+          .pipe(
+              map(
+                  result => {
+                      console.log(result+"reg")
+                
+                      return result;
+                  }
+              )
+          )
+    }
 }

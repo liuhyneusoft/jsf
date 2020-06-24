@@ -60,7 +60,7 @@ export class PlayListComponent implements OnInit {
     },
     {
       level: 1,
-      title: 'Mentor',
+      title: 'Training',
       url: '/cmentor',
       icon: 'setting',
       selected: false,

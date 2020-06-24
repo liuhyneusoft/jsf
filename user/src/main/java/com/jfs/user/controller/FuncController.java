@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jfs.user.service.UserService;
@@ -21,6 +22,14 @@ public class FuncController {
     public JSFResponse getMentors(){
 		JSFResponse cr = new JSFResponse();
 		List<MentoVo> vos = us.getMentors();
+		cr.setValue("result", vos);
+        return cr;
+    }
+	
+	@RequestMapping(value = "/mentors/param", method = { RequestMethod.GET })
+    public JSFResponse param(@RequestParam(name = "name") String name, @RequestParam(name = "skill") String skill){
+		JSFResponse cr = new JSFResponse();
+		List<MentoVo> vos = us.getMentorsParam(name, skill);
 		cr.setValue("result", vos);
         return cr;
     }

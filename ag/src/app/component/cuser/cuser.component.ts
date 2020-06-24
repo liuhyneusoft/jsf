@@ -1,8 +1,7 @@
  
 import { NzTableModule } from 'ng-zorro-antd/table';
-  
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { CService } from "../../_service/cservice";
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -15,16 +14,21 @@ import { Router } from '@angular/router';
 })
 export class CuserComponent implements OnInit {
   listOfData   = [];
+  validateForm!: FormGroup;
   constructor(   private message: NzMessageService,
     private fb: FormBuilder,
     private prService: CService,
     private router: Router ) { }
 
   ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      name: [null] ,
+      skill: [null]
+    });
     this.initTable();
   }
   selMent(name):void {
-    this.message.info(name );
+    this.message.info("select mentor " + name );
   }
 
   initTable(): void { 
@@ -39,5 +43,16 @@ export class CuserComponent implements OnInit {
 			}
 		});
   }
-
+  searchM():void {
+    this.prService.searchM(this.validateForm.value.name, 
+      this.validateForm.value.skill)
+    .subscribe(result => {
+      if (result.code != '00000') {
+        this.message.error(result.msg);
+				return;
+			} else {
+        this.listOfData = result.responseBody.result;
+			}
+		});
+  }
 }
