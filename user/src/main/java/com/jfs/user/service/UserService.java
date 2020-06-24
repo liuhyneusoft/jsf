@@ -1,11 +1,17 @@
 package com.jfs.user.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jsf.common.dao.MentorRepository;
 import com.jsf.common.dao.UserRepository;
+import com.jsf.common.entity.MentorEntity;
 import com.jsf.common.entity.UserEntity;
 import com.jsf.common.param.UserRegParam;
+import com.jsf.common.vo.MentoVo;
 
  
 @Service
@@ -13,6 +19,22 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private MentorRepository mentorRepo;
+	
+	
+	public List<MentoVo> getMentors() {
+		List<MentorEntity> mentorEntities = mentorRepo.findAll();
+		return mentorEntities.stream().map(v ->mentoToVo(v)).collect(Collectors.toList());
+	}
+	
+	private MentoVo mentoToVo(MentorEntity m) {
+		MentoVo vo = new MentoVo();
+		vo.setName(m.getName());
+		vo.setMail(m.getName());
+		vo.setExp("10");
+		return vo;
+	}
 	
 	public UserEntity addUser(UserRegParam param) {
 		UserEntity user = new UserEntity();

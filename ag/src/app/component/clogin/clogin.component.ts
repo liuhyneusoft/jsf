@@ -62,6 +62,9 @@ export class CloginComponent implements OnInit {
   fgPw():void {
     this.message.info('developing' );
   }
+
+
+ 
   // validateForm!: FormGroup;
  
 

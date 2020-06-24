@@ -30,6 +30,18 @@ export class CService {
             )
     }
 
+    getMentor() {
+        return this.httpCustomer
+          .httpGet(`${environment.apiUrl}/user-service/fun/mentors`)
+          .pipe(
+              map(
+                  result => {
+                      return result;
+                  }
+              )
+          )
+  }
+
 
     register(name: string, password: string, type: string) {
         return this.httpCustomer

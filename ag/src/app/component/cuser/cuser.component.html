@@ -1,1 +1,22 @@
-<p>cuser works!</p>
+<nz-table #basicTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Experience</th>
+        <th>Mail</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.exp }}</td>
+        <td>{{ data.mail }}</td>
+        <td>
+          <a (click)="selMent(data.name)"> select {{ data.name }}</a>
+          <nz-divider nzType="vertical"></nz-divider>
+           
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

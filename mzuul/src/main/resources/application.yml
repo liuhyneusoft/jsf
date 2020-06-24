@@ -35,3 +35,5 @@ data-filter:
     - /user-service/login/**
   regPath: 
     - /user-service/reg/**
+  funPath: 
+    - /user-service/fun/**
