@@ -41,7 +41,7 @@ export class CService {
               )
           )
   }
-
+  
 
     register(name: string, password: string, type: string) {
         return this.httpCustomer
@@ -72,7 +72,20 @@ export class CService {
               )
           )
     }
-
+    addSkill(skillName: string ) {
+        const params = new HttpParams().set("skillName",skillName);
+        return this.httpCustomer
+          .httpGet(`${environment.apiUrl}/user-service/fun/add/skill`, {params} )
+          .pipe(
+              map(
+                  result => {
+                      console.log(result+"reg")
+                
+                      return result;
+                  }
+              )
+          )
+    }
 
     applyM(userID: string, mentorMail: string) {
         const params = new HttpParams().set("userID",userID).set("mentorMail",mentorMail);
@@ -101,10 +114,34 @@ export class CService {
           )
   }
 
+  getSkill() {
+    return this.httpCustomer
+      .httpGet(`${environment.apiUrl}/user-service/fun/skills`)
+      .pipe(
+          map(
+              result => {
+                  return result;
+              }
+          )
+      )
+}
+
   confirm(id: string) {
     const params = new HttpParams().set("id",id);
     return this.httpCustomer
       .httpGet(`${environment.apiUrl}/user-service/fun/confirm`,{params})
+      .pipe(
+          map(
+              result => {
+                  return result;
+              }
+          )
+      )
+}
+delSkill(id: string) {
+    const params = new HttpParams().set("id",id);
+    return this.httpCustomer
+      .httpGet(`${environment.apiUrl}/user-service/fun/del/skill`,{params})
       .pipe(
           map(
               result => {

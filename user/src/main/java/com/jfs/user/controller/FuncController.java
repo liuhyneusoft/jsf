@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jfs.user.service.FuncService;
 import com.jfs.user.service.UserService;
+import com.jsf.common.entity.SkillEntity;
 import com.jsf.common.resp.JSFResponse;
 import com.jsf.common.vo.MentoVo;
 
@@ -16,6 +18,31 @@ import com.jsf.common.vo.MentoVo;
 @RequestMapping("/fun")
 public class FuncController {
 
+	
+	@Autowired
+	private FuncService funcService;
+	@RequestMapping(value = "/skills", method = { RequestMethod.GET })
+    public JSFResponse skills(){
+		JSFResponse cr = new JSFResponse();
+		List<SkillEntity> vos = funcService.getSkills();
+		cr.setValue("result", vos);
+        return cr;
+    }
+	@RequestMapping(value = "/del/skill", method = { RequestMethod.GET })
+    public JSFResponse delskills(@RequestParam(name = "id") Long id){
+		JSFResponse cr = new JSFResponse();
+		List<SkillEntity> vos = funcService.delSkill(id);
+		cr.setValue("result", vos);
+        return cr;
+    }
+	@RequestMapping(value = "/add/skill", method = { RequestMethod.GET })
+    public JSFResponse addskills(@RequestParam(name = "skillName") String skillName){
+		JSFResponse cr = new JSFResponse();
+		funcService.addSkill(skillName);
+		 
+        return cr;
+    }
+	
 	@Autowired
 	private UserService us;
 	@RequestMapping(value = "/mentors", method = { RequestMethod.GET })
