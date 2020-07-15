@@ -23,7 +23,9 @@ import { CsignupComponent } from './component/csignup/csignup.component';
 import { CuserComponent } from './component/cuser/cuser.component';
 import { CmentorComponent } from './component/cmentor/cmentor.component';
 import { UsertrainComponent } from './component/usertrain/usertrain.component';
-import { CpaymentComponent } from './component/cpayment/cpayment.component'
+import { CpaymentComponent } from './component/cpayment/cpayment.component';
+import { CskillComponent } from './component/cskill/cskill.component';
+import { CnotificationComponent } from './component/cnotification/cnotification.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { CpaymentComponent } from './component/cpayment/cpayment.component'
     CuserComponent,
     CmentorComponent,
     UsertrainComponent,
-    CpaymentComponent
+    CpaymentComponent,
+    CskillComponent,
+    CnotificationComponent
   ],
   imports: [
     ReactiveFormsModule,

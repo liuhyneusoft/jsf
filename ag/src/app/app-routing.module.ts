@@ -9,6 +9,8 @@ import { CuserComponent } from './component/cuser/cuser.component';
 import { CmentorComponent } from './component/cmentor/cmentor.component';
 import { UsertrainComponent } from './component/usertrain/usertrain.component';
 import { CpaymentComponent } from './component/cpayment/cpayment.component';
+import { CskillComponent } from './component/cskill/cskill.component';
+import { CnotificationComponent } from './component/cnotification/cnotification.component';
 
 const routes: Routes = [
   
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'cmentor', component: CmentorComponent},
   { path: 'cusertrain', component: UsertrainComponent},
   { path: 'cpayment', component: CpaymentComponent},
+  { path: 'cskill', component: CskillComponent},
+  { path: 'cnotification', component: CnotificationComponent},
   { path: '**', component: CloginComponent}
  
   

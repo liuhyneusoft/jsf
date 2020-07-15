@@ -82,6 +82,23 @@ export class PlayListComponent implements OnInit {
       selected: false,
       disabled: false
     }
+    ,
+    {
+      level: 1,
+      title: 'Skill',
+      url: '/cskill',
+      icon: 'setting',
+      selected: false,
+      disabled: false
+    } ,
+    {
+      level: 1,
+      title: 'Notification',
+      url: '/cnotification',
+      icon: 'setting',
+      selected: false,
+      disabled: false
+    }
 
   ];
 
