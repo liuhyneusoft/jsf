@@ -30,7 +30,7 @@ export class UsertrainComponent implements OnInit {
         this.message.error(result.msg);
 				return;
 			} else {
-        debugger;
+    
         this.listOfData = result.responseBody.result;
 			}
 		});

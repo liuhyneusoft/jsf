@@ -43,7 +43,7 @@ export class CloginComponent implements OnInit {
       this.validateForm.value.userName, 
       this.validateForm.value.password)
     .subscribe(result => {
-      debugger
+      
       if (result.code != '00000') {
         this.message.error(result.msg);
 				return;

@@ -26,7 +26,7 @@ export class EditvideoComponent implements OnInit {
     this.initValidateForm(); 
   }
   getPlayList(){
-    debugger
+     
       let a = { id: 2,
               title: "video2",  
               url: "assets/video/video2.mp4", 
@@ -95,7 +95,7 @@ export class EditvideoComponent implements OnInit {
       };
       li.push(a);
       this.playList = li;
-        debugger;
+        
         this.isVisible = false;
   }
 
