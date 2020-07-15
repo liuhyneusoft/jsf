@@ -72,8 +72,8 @@ export class CService {
               )
           )
     }
-    addSkill(skillName: string ) {
-        const params = new HttpParams().set("skillName",skillName);
+    addSkill(skillID: string, skillName: string ) {
+        const params = new HttpParams().set("skillName",skillName).set("skillID",skillID);
         return this.httpCustomer
           .httpGet(`${environment.apiUrl}/user-service/fun/add/skill`, {params} )
           .pipe(

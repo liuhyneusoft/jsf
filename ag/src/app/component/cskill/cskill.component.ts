@@ -24,17 +24,25 @@ export class CskillComponent implements OnInit {
   ngOnInit(): void {
     this.initTable();
     this.validateForm = this.fb.group({
-      skillName: [null, [Validators.required]] 
+      skillName: [null, [Validators.required]]  ,
+      skillID : [null]
     });
   }
   showModal(): void {
     this.isVisible = true;
    
   }
+  modify(id, name):void {
+    this.isVisible = true;
+    this.validateForm = this.fb.group({
+      skillName: [name],
+      skillID : [id]
+    });
 
+  }
   handleOk(): void {
     console.log('Button ok clicked!');
-    this.prService.addSkill(this.validateForm.value.skillName)
+    this.prService.addSkill(this.validateForm.value.skillID, this.validateForm.value.skillName)
     .subscribe(result => {
       if (result.code != '00000') {
         this.message.error(result.msg);
@@ -60,27 +68,14 @@ export class CskillComponent implements OnInit {
         this.message.error(result.msg);
 				return;
 			} else {
-        debugger;
+      
         this.listOfData = result.responseBody.result;
 			}
 		});
   }
 
 
-  modify(id):void {
-     
-    this.prService.confirm(id) 
-    .subscribe(result => {
-      if (result.code != '00000') {
-        this.message.error(result.msg);
-				return;
-			} else {
-        this.initTable();
-        this.message.info(result.msg);
-			}
-		});
 
-  }
  
 
   delete(id):void {

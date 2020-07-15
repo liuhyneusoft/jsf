@@ -36,9 +36,10 @@ public class FuncController {
         return cr;
     }
 	@RequestMapping(value = "/add/skill", method = { RequestMethod.GET })
-    public JSFResponse addskills(@RequestParam(name = "skillName") String skillName){
+    public JSFResponse addskills(@RequestParam(name = "skillName") String skillName, 
+    		@RequestParam(name = "skillID",required = false) Long skillID){
 		JSFResponse cr = new JSFResponse();
-		funcService.addSkill(skillName);
+		funcService.addSkill(skillName,skillID);
 		 
         return cr;
     }
